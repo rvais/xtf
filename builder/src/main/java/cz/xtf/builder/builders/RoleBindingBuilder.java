@@ -1,7 +1,7 @@
 package cz.xtf.builder.builders;
 
-import io.fabric8.openshift.api.model.RoleBinding;
-import io.fabric8.openshift.api.model.RoleBindingFluent;
+import io.fabric8.openshift.api.model.OpenshiftRoleBinding;
+import io.fabric8.openshift.api.model.OpenshiftRoleBindingFluent;
 
 /**
  * Definition of RoleBinding. Example:
@@ -23,7 +23,7 @@ import io.fabric8.openshift.api.model.RoleBindingFluent;
  *   namespace: myproject
  * </pre>
  */
-public class RoleBindingBuilder extends AbstractBuilder<RoleBinding, RoleBindingBuilder> {
+public class RoleBindingBuilder extends AbstractBuilder<OpenshiftRoleBinding, RoleBindingBuilder> {
 	private String subjectKind;
 	private String subjectName;
 	private String subjectNamespace;
@@ -92,8 +92,8 @@ public class RoleBindingBuilder extends AbstractBuilder<RoleBinding, RoleBinding
 	}
 
 	@Override
-	public RoleBinding build() {
-		RoleBindingFluent.SubjectsNested<io.fabric8.openshift.api.model.RoleBindingBuilder> subject = new io.fabric8.openshift.api.model.RoleBindingBuilder()
+	public OpenshiftRoleBinding build() {
+		OpenshiftRoleBindingFluent.SubjectsNested<io.fabric8.openshift.api.model.OpenshiftRoleBindingBuilder> subject = new io.fabric8.openshift.api.model.OpenshiftRoleBindingBuilder()
 				.withNewMetadata()
 				.withName(this.getName())
 				.endMetadata()
@@ -104,7 +104,7 @@ public class RoleBindingBuilder extends AbstractBuilder<RoleBinding, RoleBinding
 		if (subjectNamespace != null && !subjectNamespace.isEmpty())
 			subject.withNamespace(subjectNamespace);
 
-		RoleBindingFluent.RoleRefNested<io.fabric8.openshift.api.model.RoleBindingBuilder> roleRef = subject
+		OpenshiftRoleBindingFluent.RoleRefNested<io.fabric8.openshift.api.model.OpenshiftRoleBindingBuilder> roleRef = subject
 				.endSubject()
 				.withNewRoleRef()
 				.withKind(roleRefKind)

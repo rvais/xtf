@@ -20,7 +20,7 @@ import io.fabric8.kubernetes.api.model.rbac.Role;
  *   apiGroups: [""]
  *</pre>
  */
-public class RoleBuilder extends AbstractBuilder<Role, RoleBuilder> {
+public class RoleBuilder extends AbstractBuilder<OpenshiftRole, RoleBuilder> {
 	private Collection<String> resources;
 	private Collection<String> verbs;
 	private Collection<String> apiGroups;
@@ -50,8 +50,8 @@ public class RoleBuilder extends AbstractBuilder<Role, RoleBuilder> {
 	}
 
 	@Override
-	public Role build() {
-		return new io.fabric8.openshift.api.model.RoleBuilder()
+	public OpenshiftRole build() {
+		return new io.fabric8.openshift.api.model.OpenshiftRoleBuilder()
 				.withNewMetadata()
 					.withName(this.getName())
 				.endMetadata()

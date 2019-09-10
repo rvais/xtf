@@ -12,8 +12,8 @@ import io.fabric8.kubernetes.api.model.Service;
 import io.fabric8.openshift.api.model.BuildConfig;
 import io.fabric8.openshift.api.model.DeploymentConfig;
 import io.fabric8.openshift.api.model.ImageStream;
-import io.fabric8.openshift.api.model.Role;
-import io.fabric8.openshift.api.model.RoleBinding;
+import io.fabric8.openshift.api.model.OpenshiftRole;
+import io.fabric8.openshift.api.model.OpenshiftRoleBinding;
 import io.fabric8.openshift.api.model.Route;
 import lombok.extern.slf4j.Slf4j;
 
@@ -260,11 +260,11 @@ public class ApplicationBuilder {
 		return routes.stream().map(RouteBuilder::build).collect(Collectors.toList());
 	}
 
-	public List<Role> buildRoles() {
+	public List<OpenshiftRole> buildRoles() {
 		return roles.stream().map(RoleBuilder::build).collect(Collectors.toList());
 	}
 
-	public List<RoleBinding> buildRoleBindings() {
+	public List<OpenshiftRoleBinding> buildRoleBindings() {
 		return roleBindings.stream().map(RoleBindingBuilder::build).collect(Collectors.toList());
 	}
 
